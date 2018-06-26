@@ -14,7 +14,7 @@ Creating new tire and vehicle models
 
 Push from docs to gh-pages branch
 
-    git subtree push --prefix dist origin gh-pages
+    git subtree push --prefix docs origin gh-pages
 
 
 Instructions
@@ -30,11 +30,6 @@ To push your contribution see the following steps:
 * Update main.m and api.m.
 * Run makeDoc.m.
 * Commit and push.
-
-What is the workflow for contributing to the documentation:
-
-* change to gh-pages
-* make sure that the cloud_sptheme in python is installed (for conda see conda install -c conda-forge cloud_sptheme)
 
 To Do List
 ================================================================================
