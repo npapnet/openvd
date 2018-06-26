@@ -31,6 +31,11 @@ To push your contribution see the following steps:
 * Run makeDoc.m.
 * Commit and push.
 
+What is the workflow for contributing to the documentation:
+
+* change to gh-pages
+* make sure that the cloud_sptheme in python is installed (for conda see conda install -c conda-forge cloud_sptheme)
+
 To Do List
 ================================================================================
 
