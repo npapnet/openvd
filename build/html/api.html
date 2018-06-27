@@ -107,11 +107,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
-<li><strong>k</strong> – Cornering stiffness [N/rad]</li>
-<li><strong>q</strong> – Cornering stiffness 2 [N/rad]</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><strong>k</strong> – Cornering stiffness [N/rad] (default: 40000)</td>
 </tr>
 </tbody>
 </table>
@@ -404,19 +400,54 @@ Requires:
 <span class="target" id="module-Simulator"></span><dl class="class">
 <dt id="Simulator.Simulator">
 <em class="property">class </em><code class="descclassname">Simulator.</code><code class="descname">Simulator</code><a class="reference internal" href="_modules/Simulator.html#Simulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Simulator.Simulator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tire Tire abstract class This class must be inherited by tire models that will be used with the simulator. This class has no properties, since parameters of tire models differ significantly from one another.</p>
+<dd><dl class="docutils">
+<dt>Simulator Vehicle dynamics simulator</dt>
+<dd>The simulator receives a vehicle object that 
+inherits from VehicleSimple, simulates its behavior during a given 
+time span and provides its behavior during time via its properties. Each property is a (timespan, 1) vector in which each value represents that parameter’s value in time.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><strong>param</strong> – Loucura</td>
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Vehicle</strong> – Vehicle model to be used inthe simulation</li>
+<li><strong>TSpan</strong> – a vector indicating the intervals in which the simulation steps will be conducted</li>
+<li><strong>X0</strong> – Initial CG horizontal position [m] (init to 0)</li>
+<li><strong>Y0</strong> – Initial CG vertical position [m] (init to 0)</li>
+<li><strong>PSI0</strong> – : Initial yaw angle [rad] (init to 0)</li>
+<li><strong>PHI0</strong> – Initial articulation angle [rad] (init to 0)</li>
+<li><strong>THETA0</strong> – Initial roll angle [rad] (init to 0)</li>
+<li><strong>V0</strong> – Initial CG velocity [m/s] (init to 20)</li>
+<li><strong>ALPHAT0</strong> – Initial side slip angle [rad] (init to 0)</li>
+<li><strong>dPSI0</strong> – Initial yaw rate [rad/s] (init to 0)</li>
+<li><strong>dPHI0</strong> – Initial articulation rate [rad/s] (init to 0)</li>
+<li><strong>dTHETA0</strong> – Initial roll rate [rad/s] (init to 0)</li>
+<li><strong>XT</strong> – CG horizontal position [m]</li>
+<li><strong>YT</strong> – CG vertical position [m]</li>
+<li><strong>PSI</strong> – Yaw angle [rad]</li>
+<li><strong>PHI</strong> – Relative yaw angle [rad]</li>
+<li><strong>THETA</strong> – Roll angle [rad]</li>
+<li><strong>VEL</strong> – CG velocity [m/s]</li>
+<li><strong>ALPHAT</strong> – Side slip angle [rad]</li>
+<li><strong>dPSI</strong> – Yaw rate [rad/s]</li>
+<li><strong>dPHI</strong> – Relative yaw rate [rad/s]</li>
+<li><strong>dTHETA</strong> – Roll rate [rad/s]</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="Simulator.Simulator.Characteristic">
-<code class="descname">Characteristic</code><span class="sig-paren">(</span><em>alpha</em>, <em>varargin</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Simulator.html#Simulator.Characteristic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Simulator.Simulator.Characteristic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tell my details.</p>
+<dt id="Simulator.Simulator.Simulate">
+<code class="descname">Simulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Simulator.html#Simulator.Simulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Simulator.Simulator.Simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>integration</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Simulator.Simulator.getInitialState">
+<code class="descname">getInitialState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Simulator.html#Simulator.getInitialState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Simulator.Simulator.getInitialState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms properties into a vector so it can be used by the integrator</p>
 </dd></dl>
 
 </dd></dl>

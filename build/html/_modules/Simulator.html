@@ -50,17 +50,54 @@
             
   <h1>Source code for Simulator</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="Simulator"><a class="viewcode-back" href="../api.html#Simulator.Simulator">[docs]</a><span></span><span class="k">class</span> <span class="nc">Simulator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Tire Tire abstract class This class must be inherited by tire models that will be used with the simulator. This class has no properties, since parameters of tire models differ significantly from one another.</span>
-
-<span class="sd">    :var param: Loucura</span>
-
+    <span class="sd">&#39;&#39;&#39; Simulator Vehicle dynamics simulator</span>
+<span class="sd">        The simulator receives a vehicle object that </span>
+<span class="sd">        inherits from VehicleSimple, simulates its behavior during a given </span>
+<span class="sd">        time span and provides its behavior during time via its properties. Each property is a (timespan, 1) vector in which each value represents that parameter&#39;s value in time.</span>
+<span class="sd">  </span>
+<span class="sd">    :var Vehicle: Vehicle model to be used inthe simulation</span>
+<span class="sd">    :var TSpan: a vector indicating the intervals in which the simulation steps will be conducted</span>
+<span class="sd">    :var X0: Initial CG horizontal position [m] (init to 0)</span>
+<span class="sd">    :var Y0: Initial CG vertical position [m] (init to 0)</span>
+<span class="sd">    :var PSI0:  : Initial yaw angle [rad] (init to 0) </span>
+<span class="sd">    :var PHI0: Initial articulation angle [rad] (init to 0)</span>
+<span class="sd">    :var THETA0: Initial roll angle [rad] (init to 0)</span>
+<span class="sd">    :var V0: Initial CG velocity [m/s] (init to 20)</span>
+<span class="sd">    :var ALPHAT0: Initial side slip angle [rad] (init to 0)</span>
+<span class="sd">    :var dPSI0: Initial yaw rate [rad/s] (init to 0)</span>
+<span class="sd">    :var dPHI0: Initial articulation rate [rad/s] (init to 0)</span>
+<span class="sd">    :var dTHETA0: Initial roll rate [rad/s] (init to 0)</span>
+<span class="sd">    :var XT: CG horizontal position [m]</span>
+<span class="sd">    :var YT: CG vertical position [m]</span>
+<span class="sd">    :var PSI: Yaw angle [rad]</span>
+<span class="sd">    :var PHI: Relative yaw angle [rad]</span>
+<span class="sd">    :var THETA: Roll angle [rad]</span>
+<span class="sd">    :var VEL: CG velocity [m/s]</span>
+<span class="sd">    :var ALPHAT: Side slip angle [rad]</span>
+<span class="sd">    :var dPSI: Yaw rate [rad/s]</span>
+<span class="sd">    :var dPHI: Relative yaw rate [rad/s]</span>
+<span class="sd">    :var dTHETA: Roll rate [rad/s]</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">        Requires</span>
+<span class="sd">        :var Vehicle: Vehicle model to be used inthe simulation</span>
+<span class="sd">        :var tspan: a vector indicating the intervals in which the simulation steps will be conducted</span>
 
-<div class="viewcode-block" id="Simulator.Characteristic"><a class="viewcode-back" href="../api.html#Simulator.Simulator.Characteristic">[docs]</a>    <span class="k">def</span> <span class="nf">Characteristic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">varargin</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Tell my details.&#39;&#39;&#39;</span>
+<span class="sd">        Depending on the type of vehicle the initialisation is different.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+
+<div class="viewcode-block" id="Simulator.Simulate"><a class="viewcode-back" href="../api.html#Simulator.Simulator.Simulate">[docs]</a>    <span class="k">def</span> <span class="nf">Simulate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;integration</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Simulator.getInitialState"><a class="viewcode-back" href="../api.html#Simulator.Simulator.getInitialState">[docs]</a>    <span class="k">def</span> <span class="nf">getInitialState</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Transforms properties into a vector so it can be used by the integrator</span>
+<span class="sd">   </span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">pass</span></div></div>
 </pre></div>
 
