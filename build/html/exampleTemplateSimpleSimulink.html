@@ -155,6 +155,135 @@
 <div class="section" id="simple-vehicle-s-function">
 <span id="vehicle-simple-sfunction"></span><h2>Simple Vehicle S-Function<a class="headerlink" href="#simple-vehicle-s-function" title="Permalink to this headline">¶</a></h2>
 <p>The simple vehicle S-Function is depicted below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="p">[</span><span class="n">sys</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="nb">str</span><span class="p">,</span><span class="n">ts</span><span class="p">]</span> <span class="o">=</span> <span class="n">SimpleVehicleSFunction</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">flag</span><span class="p">)</span>
+<span class="o">%</span> <span class="n">This</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">s</span><span class="o">-</span><span class="n">function</span> <span class="n">template</span> <span class="k">for</span> <span class="n">simulating</span> <span class="n">the</span> <span class="n">simple</span> <span class="n">vehicle</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">Simulink</span><span class="o">.</span>
+
+<span class="o">%</span> <span class="n">Choosing</span> <span class="n">tire</span> <span class="n">model</span>
+<span class="n">TireModel</span> <span class="o">=</span> <span class="n">TirePacejka</span><span class="p">();</span>
+<span class="o">%</span> <span class="n">Defining</span> <span class="n">tire</span> <span class="n">parameters</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a2</span> <span class="o">=</span> <span class="mi">800</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a3</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a4</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a5</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a6</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a7</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a8</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a9</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a10</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a11</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a12</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">TireModel</span><span class="o">.</span><span class="n">a13</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Choosing</span> <span class="n">vehicle</span> <span class="n">model</span>
+<span class="n">VehicleModel</span> <span class="o">=</span> <span class="n">VehicleSimpleNonlinear</span><span class="p">();</span>
+<span class="o">%</span> <span class="n">Defining</span> <span class="n">vehicle</span> <span class="n">parameters</span>
+<span class="n">VehicleModel</span><span class="o">.</span><span class="n">mF0</span> <span class="o">=</span> <span class="mi">700</span><span class="p">;</span>
+<span class="n">VehicleModel</span><span class="o">.</span><span class="n">mR0</span> <span class="o">=</span> <span class="mi">600</span><span class="p">;</span>
+<span class="n">VehicleModel</span><span class="o">.</span><span class="n">IT</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+<span class="n">VehicleModel</span><span class="o">.</span><span class="n">lT</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">;</span>
+<span class="n">VehicleModel</span><span class="o">.</span><span class="n">nF</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">VehicleModel</span><span class="o">.</span><span class="n">nR</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">VehicleModel</span><span class="o">.</span><span class="n">wT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">VehicleModel</span><span class="o">.</span><span class="n">muy</span> <span class="o">=</span> <span class="o">.</span><span class="mi">8</span><span class="p">;</span>
+<span class="n">VehicleModel</span><span class="o">.</span><span class="n">tire</span> <span class="o">=</span> <span class="n">TireModel</span><span class="p">;</span>
+
+<span class="n">switch</span> <span class="n">flag</span><span class="p">,</span>
+
+  <span class="o">%%%%%%%%%%%%%%%%%%</span>
+  <span class="o">%</span> <span class="n">Initialization</span> <span class="o">%</span>
+  <span class="o">%%%%%%%%%%%%%%%%%%</span>
+  <span class="n">case</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">sys</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="nb">str</span><span class="p">,</span><span class="n">ts</span><span class="p">]</span><span class="o">=</span><span class="n">mdlInitializeSizes</span><span class="p">();</span>
+
+  <span class="o">%%%%%%%%%%%%%%%</span>
+  <span class="o">%</span> <span class="n">Derivatives</span> <span class="o">%</span>
+  <span class="o">%%%%%%%%%%%%%%%</span>
+  <span class="n">case</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">sys</span><span class="o">=</span><span class="n">mdlDerivatives</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">VehicleModel</span><span class="p">);</span>
+
+  <span class="o">%%%%%%%%%%%</span>
+  <span class="o">%</span> <span class="n">Outputs</span> <span class="o">%</span>
+  <span class="o">%%%%%%%%%%%</span>
+  <span class="n">case</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">sys</span><span class="o">=</span><span class="n">mdlOutputs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">VehicleModel</span><span class="p">);</span>
+
+  <span class="o">%%%%%%%%%%%%%%%%%%%</span>
+  <span class="o">%</span> <span class="n">Unhandled</span> <span class="n">flags</span> <span class="o">%</span>
+  <span class="o">%%%%%%%%%%%%%%%%%%%</span>
+  <span class="n">case</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span> <span class="p">},</span>
+    <span class="n">sys</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="o">%%%%%%%%%%%%%%%%%%%%</span>
+  <span class="o">%</span> <span class="n">Unexpected</span> <span class="n">flags</span> <span class="o">%</span>
+  <span class="o">%%%%%%%%%%%%%%%%%%%%</span>
+  <span class="n">otherwise</span>
+    <span class="n">DAStudio</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Simulink:blocks:unhandledFlag&#39;</span><span class="p">,</span> <span class="n">num2str</span><span class="p">(</span><span class="n">flag</span><span class="p">));</span>
+
+<span class="n">end</span>
+<span class="o">%</span> <span class="n">end</span> <span class="n">csfunc</span>
+
+<span class="o">%</span>
+<span class="o">%=============================================================================</span>
+<span class="o">%</span> <span class="n">mdlInitializeSizes</span>
+<span class="o">%</span> <span class="n">Return</span> <span class="n">the</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">initial</span> <span class="n">conditions</span><span class="p">,</span> <span class="ow">and</span> <span class="n">sample</span> <span class="n">times</span> <span class="k">for</span> <span class="n">the</span> <span class="n">S</span><span class="o">-</span><span class="n">function</span><span class="o">.</span>
+<span class="o">%=============================================================================</span>
+<span class="o">%</span>
+<span class="n">function</span> <span class="p">[</span><span class="n">sys</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="nb">str</span><span class="p">,</span><span class="n">ts</span><span class="p">]</span><span class="o">=</span><span class="n">mdlInitializeSizes</span><span class="p">()</span>
+
+<span class="o">%</span> <span class="n">Definitions</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">simsizes</span><span class="p">;</span>
+<span class="n">sizes</span><span class="o">.</span><span class="n">NumContStates</span>  <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<span class="n">sizes</span><span class="o">.</span><span class="n">NumDiscStates</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">sizes</span><span class="o">.</span><span class="n">NumOutputs</span>     <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<span class="n">sizes</span><span class="o">.</span><span class="n">NumInputs</span>      <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">sizes</span><span class="o">.</span><span class="n">DirFeedthrough</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">sizes</span><span class="o">.</span><span class="n">NumSampleTimes</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="n">sys</span> <span class="o">=</span> <span class="n">simsizes</span><span class="p">(</span><span class="n">sizes</span><span class="p">);</span>
+
+<span class="o">%</span> <span class="n">Setting</span> <span class="n">initial</span> <span class="n">conditions</span>
+<span class="n">x0</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">20</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">];</span>
+<span class="nb">str</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="n">ts</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">];</span>
+
+<span class="o">%</span> <span class="n">end</span> <span class="n">mdlInitializeSizes</span>
+<span class="o">%</span>
+<span class="o">%=============================================================================</span>
+<span class="o">%</span> <span class="n">mdlDerivatives</span>
+<span class="o">%</span> <span class="n">Return</span> <span class="n">the</span> <span class="n">derivatives</span> <span class="k">for</span> <span class="n">the</span> <span class="n">continuous</span> <span class="n">states</span><span class="o">.</span>
+<span class="o">%=============================================================================</span>
+<span class="o">%</span>
+
+
+<span class="n">function</span> <span class="n">sys</span> <span class="o">=</span> <span class="n">mdlDerivatives</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span>
+
+<span class="o">%</span> <span class="n">Defining</span> <span class="nb">input</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">deltaf</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">Fxf</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">Fxr</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="o">%</span> <span class="n">Getting</span> <span class="n">the</span> <span class="n">vehicle</span> <span class="n">model</span> <span class="n">function</span> <span class="p">(</span><span class="n">state</span> <span class="n">equations</span><span class="p">)</span>
+<span class="n">ModelFunction</span> <span class="o">=</span> <span class="nd">@vehicle</span><span class="o">.</span><span class="n">Model</span><span class="p">;</span>
+
+<span class="n">sys</span> <span class="o">=</span> <span class="n">ModelFunction</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="o">%</span> <span class="n">end</span> <span class="n">mdlDerivatives</span>
+<span class="o">%</span>
+<span class="o">%=============================================================================</span>
+<span class="o">%</span> <span class="n">mdlOutputs</span>
+<span class="o">%</span> <span class="n">Return</span> <span class="n">the</span> <span class="n">block</span> <span class="n">outputs</span><span class="o">.</span>
+<span class="o">%=============================================================================</span>
+<span class="o">%</span>
+<span class="n">function</span> <span class="n">sys</span><span class="o">=</span><span class="n">mdlOutputs</span><span class="p">(</span><span class="o">~</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="o">~</span><span class="p">,</span><span class="o">~</span><span class="p">)</span>
+
+<span class="o">%</span> <span class="n">Output</span> <span class="n">are</span> <span class="nb">all</span> <span class="n">state</span> <span class="n">variables</span>
+<span class="n">sys</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">end</span> <span class="n">mdlOutputs</span>
+</pre></div>
+</div>
 </div>
 </div>
 

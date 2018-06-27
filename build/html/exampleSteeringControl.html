@@ -312,6 +312,42 @@
 </pre></div>
 </div>
 <p>The control law of the lateral dynamics is implemented in the code below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">controlEffort</span> <span class="o">=</span> <span class="n">ControlLaw</span><span class="p">(</span><span class="n">sysData</span><span class="p">,</span><span class="o">~</span><span class="p">)</span>
+    <span class="o">%</span> <span class="n">sysData</span> <span class="n">are</span> <span class="n">the</span> <span class="n">informations</span> <span class="n">of</span> <span class="n">the</span> <span class="n">system</span> <span class="n">necessary</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">the</span> <span class="n">control</span> <span class="n">effort</span>
+    <span class="o">%</span> <span class="n">controlEffort</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">control</span> <span class="nb">input</span> <span class="n">of</span> <span class="n">the</span> <span class="n">system</span>
+
+    <span class="o">%</span> <span class="n">In</span> <span class="n">this</span> <span class="n">case</span><span class="p">,</span> <span class="n">the</span> <span class="n">sysData</span> <span class="n">contains</span> <span class="n">the</span> <span class="n">simple</span> <span class="n">vehicle</span> <span class="n">state</span> <span class="n">variables</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">sysData</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="n">sysData</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="n">sysData</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="n">sysData</span><span class="p">(</span><span class="mi">6</span><span class="p">)];</span>
+
+    <span class="o">%</span> <span class="n">Vehicle</span> <span class="n">longitudinal</span> <span class="n">position</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sysData</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="o">%</span> <span class="n">Lateral</span> <span class="n">displacement</span>
+    <span class="n">LateralDisp</span> <span class="o">=</span> <span class="mf">3.6</span><span class="p">;</span>
+
+    <span class="o">%</span> <span class="n">Reference</span> <span class="n">signal</span> <span class="p">(</span><span class="n">Double</span> <span class="n">lane</span> <span class="n">change</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">X</span> <span class="o">&lt;=</span> <span class="mi">15</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">end</span>
+    <span class="k">if</span> <span class="n">X</span> <span class="o">&gt;</span> <span class="mi">15</span> <span class="o">&amp;&amp;</span> <span class="n">X</span> <span class="o">&lt;=</span> <span class="mi">70</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">LateralDisp</span><span class="p">;</span>
+    <span class="n">end</span>
+    <span class="k">if</span> <span class="n">X</span> <span class="o">&gt;</span> <span class="mi">70</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">end</span>
+
+    <span class="o">%</span> <span class="n">Control</span> <span class="n">gains</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.7936</span>    <span class="mf">6.6882</span>    <span class="mf">1.6107</span>    <span class="mf">0.5090</span><span class="p">];</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="o">-</span> <span class="n">K</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">K</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">r</span><span class="p">;</span>
+
+    <span class="o">%</span> <span class="n">Saturation</span> <span class="n">of</span> <span class="n">the</span> <span class="n">control</span> <span class="n">effort</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">42</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+        <span class="n">controlEffort</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">controlEffort</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="mi">42</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+    <span class="n">end</span>
+</pre></div>
+</div>
 </div>
 </div>
 
