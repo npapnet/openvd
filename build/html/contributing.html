@@ -78,6 +78,28 @@
 <li>Commit and push.</li>
 </ul>
 </div>
+<div class="section" id="instructions-documentation-contribution-for-windows-with-anaconda">
+<h2>Instructions documentation contribution for windows with anaconda<a class="headerlink" href="#instructions-documentation-contribution-for-windows-with-anaconda" title="Permalink to this headline">¶</a></h2>
+<p>To prepare the system:</p>
+<ul>
+<li><p class="first">open up a terminal and in install</p>
+<blockquote>
+<div><ul class="simple">
+<li>cloud_sptheme</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>The workflow for updating and pushing your contribution see the following steps:</p>
+<blockquote>
+<div><ul class="simple">
+<li>I had to navigate to the doc folder (in master branch) and execute “make html”. this should update the html docs in the folder doc/build. This folder is ignored so you should not need to push anything from this folder.</li>
+<li>checkout the <em>gh-pages</em> branch folder</li>
+<li>copy the &lt;openvd-root&gt;/doc/build folder into &lt;openvd-root&gt;/build</li>
+<li>commit and push changes to the openvd repo (gh-pages). After a few minutes the documentation changes should be online and visible</li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="to-do-list">
 <h2>To Do List<a class="headerlink" href="#to-do-list" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition">
@@ -118,6 +140,7 @@
     <ul>
 <li><a class="reference internal" href="#">Contributing</a><ul>
 <li><a class="reference internal" href="#instructions">Instructions</a></li>
+<li><a class="reference internal" href="#instructions-documentation-contribution-for-windows-with-anaconda">Instructions documentation contribution for windows with anaconda</a></li>
 <li><a class="reference internal" href="#to-do-list">To Do List</a></li>
 </ul>
 </li>
