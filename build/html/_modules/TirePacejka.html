@@ -55,20 +55,20 @@
 <div class="viewcode-block" id="TirePacejka"><a class="viewcode-back" href="../api.html#TirePacejka.TirePacejka">[docs]</a><span class="k">class</span> <span class="nc">TirePacejka</span><span class="p">(</span><span class="n">Tire</span><span class="o">.</span><span class="n">Tire</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;TirePacejka tire model</span>
 
-<span class="sd">    :var a0: Shape factor [-]</span>
-<span class="sd">    :var a1: Load dependency of lateral friction (1000) [1/kN]</span>
-<span class="sd">    :var a2: Lateral friction level (1000) [-]</span>
-<span class="sd">    :var a3: Maximum cornering stiffness [N/deg]</span>
-<span class="sd">    :var a4: Load at maximum cornering stiffness [kN]</span>
-<span class="sd">    :var a5: Camber sensitivity of cornering stiffness</span>
-<span class="sd">    :var a6: Load dependency of curvature factor</span>
-<span class="sd">    :var a7: Curvature factor level</span>
-<span class="sd">    :var a8: Camber sensitivity of horizontal shift</span>
-<span class="sd">    :var a9: Load dependency of horizontal shift</span>
-<span class="sd">    :var a10: Horizontal shift level</span>
-<span class="sd">    :var a11: Combined load and camber sensitivity of vertical shift</span>
-<span class="sd">    :var a12: Load dependency of vertical shift</span>
-<span class="sd">    :var a13: Vertical shift level</span>
+<span class="sd">    :var a0: Shape factor [-] (default = 1)</span>
+<span class="sd">    :var a1: Load dependency of lateral friction (1000) [1/kN] (default = 0)</span>
+<span class="sd">    :var a2: Lateral friction level (1000) [-] (default = 800)</span>
+<span class="sd">    :var a3: Maximum cornering stiffness [N/deg] (default = 3000)</span>
+<span class="sd">    :var a4: Load at maximum cornering stiffness [kN] (default = 50)</span>
+<span class="sd">    :var a5: Camber sensitivity of cornering stiffness (default = 0)</span>
+<span class="sd">    :var a6: Load dependency of curvature factor  (default = 0)</span>
+<span class="sd">    :var a7: Curvature factor level  (default = -1)</span>
+<span class="sd">    :var a8: Camber sensitivity of horizontal shift  (default = 0)</span>
+<span class="sd">    :var a9: Load dependency of horizontal shift (default = 0)</span>
+<span class="sd">    :var a10: Horizontal shift level (default = 0)</span>
+<span class="sd">    :var a11: Combined load and camber sensitivity of vertical shift (default = 0)</span>
+<span class="sd">    :var a12: Load dependency of vertical shift (default = 0)</span>
+<span class="sd">    :var a13: Vertical shift level (default = 0)</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -89,7 +89,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">a12</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a13</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="nf">PlotTire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Fz</span><span class="p">,</span> <span class="n">muy</span><span class="p">):</span>
+<div class="viewcode-block" id="TirePacejka.PlotTire"><a class="viewcode-back" href="../api.html#TirePacejka.TirePacejka.PlotTire">[docs]</a>    <span class="k">def</span> <span class="nf">PlotTire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Fz</span><span class="p">,</span> <span class="n">muy</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Plots</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="c1"># % Returns the handle of the curve</span>
         <span class="c1"># alpha = (0:0.1:15)*pi/180;</span>
         <span class="c1"># Fy = - self.Characteristic(alpha, Fz, muy);</span>
@@ -97,9 +99,17 @@
         <span class="c1"># grid on; box on;</span>
         <span class="c1"># xlabel(&#39;Slip angle [deg]&#39;)</span>
         <span class="c1"># ylabel(&#39;Lateral force [N]&#39;)</span>
-        <span class="k">pass</span>
+        <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="TirePacejka.Characteristic"><a class="viewcode-back" href="../api.html#TirePacejka.TirePacejka.Characteristic">[docs]</a>    <span class="k">def</span> <span class="nf">Characteristic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Fz</span><span class="p">,</span> <span class="n">muy</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Returns the lateral force F_y </span>
+<span class="sd">        Requires:</span>
+<span class="sd">        - slip angle</span>
+<span class="sd">        - Normal force </span>
+<span class="sd">        - :var muy: Lateral friction coefficient</span>
+
+<span class="sd">        Returns Fy</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="c1">#            % Input</span>
         <span class="c1">#            % alpha - slip angle [rad]</span>
         <span class="c1">#            % Fz    - Load [N]</span>

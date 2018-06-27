@@ -66,15 +66,15 @@
 <area shape="rect" id="node3" href="#TirePacejka.TirePacejka" target="_top" title="TirePacejka tire model" alt="" coords="136,55,229,80"/>
 <area shape="rect" id="node4" href="#TirePolynomial.TirePolynomial" target="_top" title="TirePolynomial" alt="" coords="125,104,240,129"/>
 </map><p>Articulated vehicles</p>
-<img src="_images/inheritance-3c56182841885f435e9ec2d410bdf7df0416a7d8.png" alt="Inheritance diagram of VehicleArticulated, VehicleArticulatedLinear, VehicleArticulatedNonlinear" usemap="#inheritanceb72a86a15e" class="inheritance"/>
+<img src="_images/inheritance-c8b5a524500a63d00bafa02754f203791eb94820.png" alt="Inheritance diagram of VehicleArticulated, VehicleArticulatedLinear, VehicleArticulatedNonlinear" usemap="#inheritanceb72a86a15e" class="inheritance"/>
 <map id="inheritanceb72a86a15e" name="inheritanceb72a86a15e">
-<area shape="rect" id="node1" href="#VehicleArticulated.VehicleArticulated" target="_top" title="Tire Tire abstract class This class must be inherited by tire models that will be used with the simulator. This class has no properties, since parameters of tire models differ significantly from one another." alt="" coords="5,31,141,56"/>
-<area shape="rect" id="node2" href="#VehicleArticulatedLinear.VehicleArticulatedLinear" target="_top" title="TireLinear Linear tire model" alt="" coords="201,5,375,31"/>
-<area shape="rect" id="node3" href="#VehicleArticulatedNonlinear.VehicleArticulatedNonlinear" target="_top" title="TireLinear Linear tire model" alt="" coords="189,55,387,80"/>
+<area shape="rect" id="node1" href="#VehicleArticulated.VehicleArticulated" target="_top" title="VehicleArticulated &#160;This is an abstract class for an articulated vehicle (i.e. a truck hauling a cargo container)." alt="" coords="5,31,132,56"/>
+<area shape="rect" id="node2" href="#VehicleArticulatedLinear.VehicleArticulatedLinear" target="_top" title="VehicleArticulatedLinear" alt="" coords="189,5,352,31"/>
+<area shape="rect" id="node3" href="#VehicleArticulatedNonlinear.VehicleArticulatedNonlinear" target="_top" title="Tell my details" alt="" coords="180,55,361,80"/>
 </map><p>Simple vehicles</p>
-<img src="_images/inheritance-8080fb835dd7bd195364c6ea88e835a8016646bc.png" alt="Inheritance diagram of VehicleSimple, VehicleSimpleLinear, VehicleSimpleNonlinear" usemap="#inheritance9f5757d628" class="inheritance"/>
+<img src="_images/inheritance-b0d3c454df88dd4589ccd4dbaf07b0c63f42e66b.png" alt="Inheritance diagram of VehicleSimple, VehicleSimpleLinear, VehicleSimpleNonlinear" usemap="#inheritance9f5757d628" class="inheritance"/>
 <map id="inheritance9f5757d628" name="inheritance9f5757d628">
-<area shape="rect" id="node1" href="#VehicleSimple.VehicleSimple" target="_top" title="Vehicle Abstract class " alt="" coords="5,31,111,56"/>
+<area shape="rect" id="node1" href="#VehicleSimple.VehicleSimple" target="_top" title="Vehicle Absract class " alt="" coords="5,31,111,56"/>
 <area shape="rect" id="node2" href="#VehicleSimpleLinear.VehicleSimpleLinear" target="_top" title="TireLinear Linear tire model" alt="" coords="168,5,308,31"/>
 <area shape="rect" id="node3" href="#VehicleSimpleNonlinear.VehicleSimpleNonlinear" target="_top" title="TireLinear Linear tire model" alt="" coords="159,55,317,80"/>
 </map><span class="target" id="module-Tire"></span><dl class="class">
@@ -92,7 +92,8 @@
 <dl class="method">
 <dt id="Tire.Tire.Characteristic">
 <code class="descname">Characteristic</code><span class="sig-paren">(</span><em>alpha</em>, <em>varargin</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Tire.html#Tire.Characteristic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Tire.Tire.Characteristic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tell my details.</p>
+<dd><p>an abstract method that should be overriden from other models</p>
+<p>Returns: Not Applicable</p>
 </dd></dl>
 
 </dd></dl>
@@ -117,7 +118,8 @@
 <dl class="method">
 <dt id="TireLinear.TireLinear.Characteristic">
 <code class="descname">Characteristic</code><span class="sig-paren">(</span><em>alpha</em>, <em>varargin</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/TireLinear.html#TireLinear.Characteristic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TireLinear.TireLinear.Characteristic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tell my details.</p>
+<dd><p>an abstract method that should be overriden from other models</p>
+<p>Returns: Not Applicable</p>
 </dd></dl>
 
 <dl class="method">
@@ -138,20 +140,20 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
-<li><strong>a0</strong> – Shape factor [-]</li>
-<li><strong>a1</strong> – Load dependency of lateral friction (1000) [1/kN]</li>
-<li><strong>a2</strong> – Lateral friction level (1000) [-]</li>
-<li><strong>a3</strong> – Maximum cornering stiffness [N/deg]</li>
-<li><strong>a4</strong> – Load at maximum cornering stiffness [kN]</li>
-<li><strong>a5</strong> – Camber sensitivity of cornering stiffness</li>
-<li><strong>a6</strong> – Load dependency of curvature factor</li>
-<li><strong>a7</strong> – Curvature factor level</li>
-<li><strong>a8</strong> – Camber sensitivity of horizontal shift</li>
-<li><strong>a9</strong> – Load dependency of horizontal shift</li>
-<li><strong>a10</strong> – Horizontal shift level</li>
-<li><strong>a11</strong> – Combined load and camber sensitivity of vertical shift</li>
-<li><strong>a12</strong> – Load dependency of vertical shift</li>
-<li><strong>a13</strong> – Vertical shift level</li>
+<li><strong>a0</strong> – Shape factor [-] (default = 1)</li>
+<li><strong>a1</strong> – Load dependency of lateral friction (1000) [1/kN] (default = 0)</li>
+<li><strong>a2</strong> – Lateral friction level (1000) [-] (default = 800)</li>
+<li><strong>a3</strong> – Maximum cornering stiffness [N/deg] (default = 3000)</li>
+<li><strong>a4</strong> – Load at maximum cornering stiffness [kN] (default = 50)</li>
+<li><strong>a5</strong> – Camber sensitivity of cornering stiffness (default = 0)</li>
+<li><strong>a6</strong> – Load dependency of curvature factor  (default = 0)</li>
+<li><strong>a7</strong> – Curvature factor level  (default = -1)</li>
+<li><strong>a8</strong> – Camber sensitivity of horizontal shift  (default = 0)</li>
+<li><strong>a9</strong> – Load dependency of horizontal shift (default = 0)</li>
+<li><strong>a10</strong> – Horizontal shift level (default = 0)</li>
+<li><strong>a11</strong> – Combined load and camber sensitivity of vertical shift (default = 0)</li>
+<li><strong>a12</strong> – Load dependency of vertical shift (default = 0)</li>
+<li><strong>a13</strong> – Vertical shift level (default = 0)</li>
 </ul>
 </td>
 </tr>
@@ -160,7 +162,18 @@
 <dl class="method">
 <dt id="TirePacejka.TirePacejka.Characteristic">
 <code class="descname">Characteristic</code><span class="sig-paren">(</span><em>alpha</em>, <em>Fz</em>, <em>muy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/TirePacejka.html#TirePacejka.Characteristic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TirePacejka.TirePacejka.Characteristic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tell my details.</p>
+<dd><p>Returns the lateral force F_y 
+Requires:
+- slip angle
+- Normal force 
+- :var muy: Lateral friction coefficient</p>
+<p>Returns Fy</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TirePacejka.TirePacejka.PlotTire">
+<code class="descname">PlotTire</code><span class="sig-paren">(</span><em>Fz</em>, <em>muy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/TirePacejka.html#TirePacejka.PlotTire"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TirePacejka.TirePacejka.PlotTire" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots</p>
 </dd></dl>
 
 </dd></dl>
@@ -172,7 +185,8 @@
 <dl class="method">
 <dt id="TirePolynomial.TirePolynomial.Characteristic">
 <code class="descname">Characteristic</code><span class="sig-paren">(</span><em>alpha</em>, <em>varargin</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/TirePolynomial.html#TirePolynomial.Characteristic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TirePolynomial.TirePolynomial.Characteristic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tell my details.</p>
+<dd><p>an abstract method that should be overriden from other models</p>
+<p>Returns: Not Applicable</p>
 </dd></dl>
 
 </dd></dl>
@@ -181,34 +195,33 @@
 <dt id="VehicleSimple.VehicleSimple">
 <em class="property">class </em><code class="descclassname">VehicleSimple.</code><code class="descname">VehicleSimple</code><a class="reference internal" href="_modules/VehicleSimple.html#VehicleSimple"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VehicleSimple.VehicleSimple" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vehicle Abstract class 
-This class must be inherited by Vehicle models that will be used with the simulator.</p>
+<p>Vehicle Absract class</p>
+<p>This class must be inherited by Vehicle models that will be used with the simulator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
-<li><strong>param</strong> – Loucura</li>
 <li><strong>mT</strong> – Mass of the car (tractor) [kg]</li>
 <li><strong>IT</strong> – Moment of inertia the car (tractor) [kg * m2]</li>
-<li><strong>a</strong> – Distance from front axle of the car (tractor) to the center of mass of the car (tractor) [m]</li>
-<li><strong>b</strong> – Distance from center of mass of the car (tractor) to the front axle of the car (tractor) [m]</li>
-<li><strong>mF0</strong> – Mass over the front axle [kg]</li>
-<li><strong>mR0</strong> – Mass over the rear axle [kg]</li>
-<li><strong>lT</strong> – Wheelbase [m]</li>
-<li><strong>nF</strong> – Number of front tires</li>
-<li><strong>nR</strong> – Number of rear tires</li>
-<li><strong>wT</strong> – Track of the car (tractor)  [m]</li>
-<li><strong>muy</strong> – Operational friction coefficient</li>
-<li><strong>tire</strong> – % Tire model</li>
-<li><strong>deltaf</strong> – % Steering angle [rad]</li>
-<li><strong>Fxf</strong> – Longitudinal force at F [rad]</li>
-<li><strong>Fxr</strong> – Longitudinal force at R [rad]</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<p>:var   a :  Distance from front axle of the car (tractor) to the center of mass of the car (tractor) [m]
+:var   b :  Distance from center of mass of the car (tractor) to the front axle of the car (tractor) [m]
+:var   mF0:  Mass over the front axle [kg]
+:var   mR0:  Mass over the rear axle [kg]
+:var   lT:  Wheelbase [m]
+:var   nF:  Number of front tires
+:var   nR:  Number of rear tires
+:var   wT:  Track of the car (tractor)  [m]
+:var   muy:  Operational friction coefficient
+:var   tire   % Tire model
+:var  deltaf % Steering angle [rad]
+:var   Fxf:  Longitudinal force at F [rad]
+:var Fxr:  Longitudinal force at R [rad]</p>
 <dl class="method">
 <dt id="VehicleSimple.VehicleSimple.Characteristic">
 <code class="descname">Characteristic</code><span class="sig-paren">(</span><em>alpha</em>, <em>varargin</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/VehicleSimple.html#VehicleSimple.Characteristic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VehicleSimple.VehicleSimple.Characteristic" title="Permalink to this definition">¶</a></dt>
@@ -314,7 +327,7 @@ This class must be inherited by Vehicle models that will be used with the simula
 <dt id="VehicleArticulated.VehicleArticulated">
 <em class="property">class </em><code class="descclassname">VehicleArticulated.</code><code class="descname">VehicleArticulated</code><a class="reference internal" href="_modules/VehicleArticulated.html#VehicleArticulated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VehicleArticulated.VehicleArticulated" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Tire Tire abstract class This class must be inherited by tire models that will be used with the simulator. This class has no properties, since parameters of tire models differ significantly from one another.</p>
+<p>VehicleArticulated  This is an abstract class for an articulated vehicle (i.e. a truck hauling a cargo container).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -335,19 +348,6 @@ This class must be inherited by Vehicle models that will be used with the simula
 <dt id="VehicleArticulatedLinear.VehicleArticulatedLinear">
 <em class="property">class </em><code class="descclassname">VehicleArticulatedLinear.</code><code class="descname">VehicleArticulatedLinear</code><a class="reference internal" href="_modules/VehicleArticulatedLinear.html#VehicleArticulatedLinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VehicleArticulatedLinear.VehicleArticulatedLinear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#VehicleArticulated.VehicleArticulated" title="VehicleArticulated.VehicleArticulated"><code class="xref py py-class docutils literal notranslate"><span class="pre">VehicleArticulated.VehicleArticulated</span></code></a></p>
-<p>TireLinear Linear tire model</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
-<li><strong>k</strong> – Cornering stiffness [N/rad]</li>
-<li><strong>q</strong> – Cornering stiffness 2 [N/rad]</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
 <dl class="method">
 <dt id="VehicleArticulatedLinear.VehicleArticulatedLinear.Characteristic">
 <code class="descname">Characteristic</code><span class="sig-paren">(</span><em>alpha</em>, <em>varargin</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/VehicleArticulatedLinear.html#VehicleArticulatedLinear.Characteristic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VehicleArticulatedLinear.VehicleArticulatedLinear.Characteristic" title="Permalink to this definition">¶</a></dt>
@@ -366,19 +366,7 @@ This class must be inherited by Vehicle models that will be used with the simula
 <dt id="VehicleArticulatedNonlinear.VehicleArticulatedNonlinear">
 <em class="property">class </em><code class="descclassname">VehicleArticulatedNonlinear.</code><code class="descname">VehicleArticulatedNonlinear</code><a class="reference internal" href="_modules/VehicleArticulatedNonlinear.html#VehicleArticulatedNonlinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VehicleArticulatedNonlinear.VehicleArticulatedNonlinear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#VehicleArticulated.VehicleArticulated" title="VehicleArticulated.VehicleArticulated"><code class="xref py py-class docutils literal notranslate"><span class="pre">VehicleArticulated.VehicleArticulated</span></code></a></p>
-<p>TireLinear Linear tire model</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
-<li><strong>k</strong> – Cornering stiffness [N/rad]</li>
-<li><strong>q</strong> – Cornering stiffness 2 [N/rad]</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
+<p>Tell my details</p>
 <dl class="method">
 <dt id="VehicleArticulatedNonlinear.VehicleArticulatedNonlinear.Characteristic">
 <code class="descname">Characteristic</code><span class="sig-paren">(</span><em>alpha</em>, <em>varargin</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/VehicleArticulatedNonlinear.html#VehicleArticulatedNonlinear.Characteristic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VehicleArticulatedNonlinear.VehicleArticulatedNonlinear.Characteristic" title="Permalink to this definition">¶</a></dt>

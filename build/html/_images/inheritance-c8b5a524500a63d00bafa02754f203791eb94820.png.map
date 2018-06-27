@@ -1,0 +1,5 @@
+<map id="inheritanceb72a86a15e" name="inheritanceb72a86a15e">
+<area shape="rect" id="node1" href="#VehicleArticulated.VehicleArticulated" target="_top" title="VehicleArticulated &#160;This is an abstract class for an articulated vehicle (i.e. a truck hauling a cargo container)." alt="" coords="5,31,132,56"/>
+<area shape="rect" id="node2" href="#VehicleArticulatedLinear.VehicleArticulatedLinear" target="_top" title="VehicleArticulatedLinear" alt="" coords="189,5,352,31"/>
+<area shape="rect" id="node3" href="#VehicleArticulatedNonlinear.VehicleArticulatedNonlinear" target="_top" title="Tell my details" alt="" coords="180,55,361,80"/>
+</map>
